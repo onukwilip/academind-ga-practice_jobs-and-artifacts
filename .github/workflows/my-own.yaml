@@ -32,6 +32,8 @@ jobs:
             ./dist
             ./package.json
             ./package.lock.json
+      - name: Set output
+        run: ls dist/* | echo "output-value={}"
 
   deploy:
     needs: build
