@@ -49,4 +49,4 @@ jobs:
       - name: List downloaded artifact
         run: ls
       - name: Display build output
-        run: echo ${{ needs.build.outputs.hello-world }}
+        run: echo '${{ needs.build.outputs.hello-world }}'
