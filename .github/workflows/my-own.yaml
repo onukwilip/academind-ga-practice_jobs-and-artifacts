@@ -17,6 +17,8 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
+    outputs:
+      hello-world: steps.set-output.outputs.output-value
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -33,7 +35,8 @@ jobs:
             ./package.json
             ./package.lock.json
       - name: Set output
-        run: ls dist/* | echo "output-value={}"
+        id: set-output
+        run: echo 'output-value="Hello world! It"s a nice day...:)"' >> $GITHUB_OUTPUT
 
   deploy:
     needs: build
@@ -45,3 +48,5 @@ jobs:
           name: dist
       - name: List downloaded artifact
         run: ls
+      - name: Display build output
+        run: echo "${{ needs.build.outputs.hello-world }}"
