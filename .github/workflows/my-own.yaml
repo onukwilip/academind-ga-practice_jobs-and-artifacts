@@ -39,5 +39,7 @@ jobs:
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
+        with:
+          name: dist
       - name: List downloaded artifact
-        run: ls -l .
+        run: ls
