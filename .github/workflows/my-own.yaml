@@ -9,6 +9,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{hashFiles('**/package-lock.json')}}
       - name: Install dependencies
         run: npm ci
       - name: Run tests
@@ -22,6 +27,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{hashFiles('**/package-lock.json')}}
       - name: Install dependencies
         run: npm ci
       - name: Build
@@ -33,7 +43,7 @@ jobs:
           path: |
             ./dist
             ./package.json
-            ./package.lock.json
+            ./package-lock.json
       - name: Set output
         id: set-output
         run: echo 'output-value=Hello world! It"s a nice day...:)' >> $GITHUB_OUTPUT
