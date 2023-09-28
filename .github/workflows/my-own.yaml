@@ -63,6 +63,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    environment: deploy
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
@@ -82,3 +83,7 @@ jobs:
         run: |
           echo PRIVATE_NAME=${{secrets.PRIVATE_NAME}}
           echo PRIVATE_SIZE=${{secrets.PRIVATE_SIZE}}
+      - name: Print environment secrets (Should display salted secret)
+        run: |
+          echo PRIVATE_NAME=${{secrets.REALLY_PRIVATE_NAME}}
+          echo PRIVATE_SIZE=${{secrets.REALLY_PRIVATE_SIZE}}
