@@ -78,3 +78,7 @@ jobs:
           echo "Using the '$<VARIABLE_NAME>' syntax --> GLOBAL_NAME=$GLOBAL_NAME"
           echo "Using the env.<VARIABLE_NAME> syntax --> BUILD_LOCAL_NAME=${{env.BUILD_LOCAL_NAME}}"
           echo "Using the env.<VARIABLE_NAME> syntax --> GLOBAL_NAME=${{env.GLOBAL_NAME}}"
+      - name: Print repository secrets (Should display salted secret)
+        run: |
+          echo PRIVATE_NAME=${{secrets.PRIVATE_NAME}}
+          echo PRIVATE_SIZE=${{secrets.PRIVATE_SIZE}}
