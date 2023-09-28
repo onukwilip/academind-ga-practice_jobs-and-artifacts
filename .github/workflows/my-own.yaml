@@ -15,6 +15,7 @@ jobs:
         run: npm run test
 
   build:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,7 +34,10 @@ jobs:
             ./package.lock.json
 
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
-        run: echo "Downloading artifact..."
+        uses: actions/download-artifact@v3
+      - name: List downloaded artifact
+        run: ls -l .
