@@ -57,8 +57,8 @@ jobs:
         run: |
           echo "Using the '$<VARIABLE_NAME>' syntax --> BUILD_LOCAL_NAME=$BUILD_LOCAL_NAME"
           echo "Using the '$<VARIABLE_NAME>' syntax --> GLOBAL_NAME=$GLOBAL_NAME"
-          echo "Using the env.<VARIABLE_NAME> syntax --> BUILD_LOCAL_NAME=$BUILD_LOCAL_NAME"
-          echo "Using the env.<VARIABLE_NAME> syntax --> GLOBAL_NAME=$GLOBAL_NAME"
+          echo "Using the env.<VARIABLE_NAME> syntax --> BUILD_LOCAL_NAME=${{env.BUILD_LOCAL_NAME}}"
+          echo "Using the env.<VARIABLE_NAME> syntax --> GLOBAL_NAME=${{env.GLOBAL_NAME}}"
 
   deploy:
     needs: build
@@ -76,5 +76,5 @@ jobs:
         run: |
           echo "Using the '$<VARIABLE_NAME>' syntax --> BUILD_LOCAL_NAME=$BUILD_LOCAL_NAME"
           echo "Using the '$<VARIABLE_NAME>' syntax --> GLOBAL_NAME=$GLOBAL_NAME"
-          echo "Using the env.<VARIABLE_NAME> syntax --> BUILD_LOCAL_NAME=$BUILD_LOCAL_NAME"
-          echo "Using the env.<VARIABLE_NAME> syntax --> GLOBAL_NAME=$GLOBAL_NAME"
+          echo "Using the env.<VARIABLE_NAME> syntax --> BUILD_LOCAL_NAME=${{env.BUILD_LOCAL_NAME}}"
+          echo "Using the env.<VARIABLE_NAME> syntax --> GLOBAL_NAME=${{env.GLOBAL_NAME}}"
